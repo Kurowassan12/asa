@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>クリックゲーム</title>
+
+<style>
+body{
+    text-align:center;
+    font-family:sans-serif;
+    background:#222;
+    color:white;
+}
+button{
+    font-size:30px;
+    padding:20px 40px;
+    margin:20px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🔥クリック連打ゲーム🔥</h1>
+<p>残り時間: <span id="time">10</span> 秒</p>
+<p>スコア: <span id="score">0</span></p>
+
+<button onclick="clickGame()">CLICK!!</button>
+
+<script>
+let score = 0;
+let time = 10;
+let playing = true;
+
+let timer = setInterval(() => {
+    if(!playing) return;
+    time--;
+    document.getElementById("time").textContent = time;
+
+    if(time <= 0){
+        playing = false;
+        alert("終了！スコア: " + score);
+        clearInterval(timer);
+    }
+},1000);
+
+function clickGame(){
+    if(!playing) return;
+    score++;
+    document.getElementById("score").textContent = score;
+}
+</script>
+
+</body>
+</html>
